@@ -19,9 +19,9 @@ const ScrollAnimatedSection: React.FC<ScrollAnimatedSectionProps> = ({
   duration = 0.8
 }) => {
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.1,
-    rootMargin: '-50px 0px'
+    rootMargin: '0px 0px -20% 0px'
   });
 
   const { scrollDirection } = useScrollDirection();
@@ -104,7 +104,7 @@ const ScrollAnimatedSection: React.FC<ScrollAnimatedSectionProps> = ({
         rotateY: directionVariants.rotateY?.[0] || 0,
         filter: 'blur(5px)'
       }}
-      animate={inView ? {
+      animate={{
         x: directionVariants.x?.[1] || 0,
         y: directionVariants.y?.[1] || 0,
         opacity: 1,
@@ -112,12 +112,6 @@ const ScrollAnimatedSection: React.FC<ScrollAnimatedSectionProps> = ({
         rotateX: directionVariants.rotateX?.[1] || 0,
         rotateY: directionVariants.rotateY?.[1] || 0,
         filter: 'blur(0px)'
-      } : {
-        x: exitVariants.x?.[1] || 0,
-        y: exitVariants.y?.[1] || 0,
-        opacity: 0.3,
-        scale: 0.95,
-        filter: 'blur(2px)'
       }}
       transition={{
         duration,

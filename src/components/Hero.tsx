@@ -94,7 +94,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-gradient-to-br from-rose-50 via-pink-50 to-peach-50">
       {/* Enhanced Animated background particles */}
       <div className="absolute inset-0">
         {[...Array(20)].map((_, i) => (
@@ -104,7 +104,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
             style={{
               width: Math.random() * 6 + 2 + 'px',
               height: Math.random() * 6 + 2 + 'px',
-              background: 'linear-gradient(135deg, #dc2626, #b91c1c, #991b1b)'
+              background: 'linear-gradient(135deg, #f97316, #ec4899, #8b5cf6)'
             }}
             initial={{
               x: Math.random() * window.innerWidth,
@@ -129,10 +129,10 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
       <motion.div
         className="absolute inset-0 opacity-20"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(220, 38, 38, 0.3) 0%, rgba(185, 28, 28, 0.2) 50%, transparent 100%)`
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(249, 115, 22, 0.3) 0%, rgba(236, 72, 153, 0.2) 50%, transparent 100%)`
         }}
         animate={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(220, 38, 38, 0.3) 0%, rgba(185, 28, 28, 0.2) 50%, transparent 100%)`
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(249, 115, 22, 0.3) 0%, rgba(236, 72, 153, 0.2) 50%, transparent 100%)`
         }}
         transition={{ duration: 0.5 }}
       />

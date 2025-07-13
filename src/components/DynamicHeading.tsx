@@ -90,14 +90,6 @@ const DynamicHeading: React.FC<DynamicHeadingProps> = ({
           ))}
         </motion.span>
       </HeadingTag>
-      
-      {/* Animated underline */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-1 rounded-full bg-gradient-to-r from-red-600 to-red-800"
-        initial={{ width: 0, opacity: 0 }}
-        animate={inView ? { width: '100%', opacity: 1 } : { width: 0, opacity: 0 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      />
     </motion.div>
   );
 };
