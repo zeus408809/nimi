@@ -28,20 +28,20 @@ const ScrollAnimatedSection: React.FC<ScrollAnimatedSectionProps> = ({
 
   const getDirectionVariants = (dir: string) => {
     const variants = {
-      left: { x: [-100, 0], y: [0, 0], opacity: [0, 1] },
-      right: { x: [100, 0], y: [0, 0], opacity: [0, 1] },
-      up: { x: [0, 0], y: [50, 0], opacity: [0, 1] },
-      down: { x: [0, 0], y: [-50, 0], opacity: [0, 1] }
+      left: { x: [-100, 0], opacity: [0, 1] },
+      right: { x: [100, 0], opacity: [0, 1] },
+      up: { y: [50, 0], opacity: [0, 1] },
+      down: { y: [-50, 0], opacity: [0, 1] }
     };
     return variants[dir as keyof typeof variants] || variants.up;
   };
 
   const getExitVariants = (dir: string) => {
     const variants = {
-      left: { x: [0, -30], y: [0, 0], opacity: [1, 0.7] },
-      right: { x: [0, 30], y: [0, 0], opacity: [1, 0.7] },
-      up: { x: [0, 0], y: [0, 30], opacity: [1, 0.7] },
-      down: { x: [0, 0], y: [0, -30], opacity: [1, 0.7] }
+      left: { x: [0, -30], opacity: [1, 0.7] },
+      right: { x: [0, 30], opacity: [1, 0.7] },
+      up: { y: [0, 30], opacity: [1, 0.7] },
+      down: { y: [0, -30], opacity: [1, 0.7] }
     };
     return variants[dir as keyof typeof variants] || variants.up;
   };
@@ -55,16 +55,16 @@ const ScrollAnimatedSection: React.FC<ScrollAnimatedSectionProps> = ({
       className={className}
       initial={{ 
         x: directionVariants.x[0], 
-        y: directionVariants.y[0], 
+        y: directionVariants.y?.[0] || 0, 
         opacity: 0 
       }}
       animate={inView ? {
         x: directionVariants.x[1],
-        y: directionVariants.y[1],
+        y: directionVariants.y?.[1] || 0,
         opacity: 1
       } : {
         x: exitVariants.x[1],
-        y: exitVariants.y[1],
+        y: exitVariants.y?.[1] || 0,
         opacity: 0.7
       }}
       transition={{
