@@ -21,56 +21,111 @@ const ScrollAnimatedSection: React.FC<ScrollAnimatedSectionProps> = ({
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
-    rootMargin: '-100px 0px'
+    rootMargin: '-50px 0px'
   });
 
   const { scrollDirection } = useScrollDirection();
 
-  const getDirectionVariants = (dir: string) => {
+  const getDirectionVariants = (dir: string, scrollDir: string) => {
+    const baseDistance = 60;
     const variants = {
-      left: { x: [-100, 0], opacity: [0, 1] },
-      right: { x: [100, 0], opacity: [0, 1] },
-      up: { y: [50, 0], opacity: [0, 1] },
-      down: { y: [-50, 0], opacity: [0, 1] }
+      left: { 
+        x: scrollDir === 'down' ? [-baseDistance, 0] : [baseDistance, 0], 
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        rotateY: [scrollDir === 'down' ? -15 : 15, 0]
+      },
+      right: { 
+        x: scrollDir === 'down' ? [baseDistance, 0] : [-baseDistance, 0], 
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        rotateY: [scrollDir === 'down' ? 15 : -15, 0]
+      },
+      up: { 
+        y: scrollDir === 'down' ? [baseDistance, 0] : [-baseDistance, 0], 
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        rotateX: [scrollDir === 'down' ? 15 : -15, 0]
+      },
+      down: { 
+        y: scrollDir === 'down' ? [-baseDistance, 0] : [baseDistance, 0], 
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        rotateX: [scrollDir === 'down' ? -15 : 15, 0]
+      }
     };
     return variants[dir as keyof typeof variants] || variants.up;
   };
 
-  const getExitVariants = (dir: string) => {
+  const getExitVariants = (dir: string, scrollDir: string) => {
+    const exitDistance = 30;
     const variants = {
-      left: { x: [0, -30], opacity: [1, 0.7] },
-      right: { x: [0, 30], opacity: [1, 0.7] },
-      up: { y: [0, 30], opacity: [1, 0.7] },
-      down: { y: [0, -30], opacity: [1, 0.7] }
+      left: { 
+        x: scrollDir === 'down' ? [-exitDistance, 0] : [exitDistance, 0], 
+        opacity: [1, 0.3],
+        scale: [1, 0.95],
+        filter: ['blur(0px)', 'blur(2px)']
+      },
+      right: { 
+        x: scrollDir === 'down' ? [exitDistance, 0] : [-exitDistance, 0], 
+        opacity: [1, 0.3],
+        scale: [1, 0.95],
+        filter: ['blur(0px)', 'blur(2px)']
+      },
+      up: { 
+        y: scrollDir === 'down' ? [exitDistance, 0] : [-exitDistance, 0], 
+        opacity: [1, 0.3],
+        scale: [1, 0.95],
+        filter: ['blur(0px)', 'blur(2px)']
+      },
+      down: { 
+        y: scrollDir === 'down' ? [-exitDistance, 0] : [exitDistance, 0], 
+        opacity: [1, 0.3],
+        scale: [1, 0.95],
+        filter: ['blur(0px)', 'blur(2px)']
+      }
     };
     return variants[dir as keyof typeof variants] || variants.up;
   };
 
-  const directionVariants = getDirectionVariants(direction);
-  const exitVariants = getExitVariants(direction);
+  const directionVariants = getDirectionVariants(direction, scrollDirection);
+  const exitVariants = getExitVariants(direction, scrollDirection);
 
   return (
     <motion.div
       ref={ref}
       className={className}
       initial={{ 
-        x: directionVariants.x[0], 
+        x: directionVariants.x?.[0] || 0, 
         y: directionVariants.y?.[0] || 0, 
-        opacity: 0 
+        opacity: 0,
+        scale: 0.9,
+        rotateX: directionVariants.rotateX?.[0] || 0,
+        rotateY: directionVariants.rotateY?.[0] || 0,
+        filter: 'blur(5px)'
       }}
       animate={inView ? {
-        x: directionVariants.x[1],
+        x: directionVariants.x?.[1] || 0,
         y: directionVariants.y?.[1] || 0,
-        opacity: 1
+        opacity: 1,
+        scale: 1,
+        rotateX: directionVariants.rotateX?.[1] || 0,
+        rotateY: directionVariants.rotateY?.[1] || 0,
+        filter: 'blur(0px)'
       } : {
-        x: exitVariants.x[1],
+        x: exitVariants.x?.[1] || 0,
         y: exitVariants.y?.[1] || 0,
-        opacity: 0.7
+        opacity: 0.3,
+        scale: 0.95,
+        filter: 'blur(2px)'
       }}
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: [0.25, 0.46, 0.45, 0.94],
+        type: "spring",
+        stiffness: 100,
+        damping: 20
       }}
     >
       {children}

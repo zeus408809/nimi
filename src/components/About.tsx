@@ -75,10 +75,10 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 opacity-50">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-pink-200/30 to-rose-300/30 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-200/30 to-blue-300/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-red-200/30 to-red-300/30 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-red-300/30 to-red-400/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -86,7 +86,6 @@ const About: React.FC = () => {
           <DynamicHeading
             level="h2"
             className="text-4xl lg:text-5xl mb-6"
-            gradientColors={['#ec4899', '#f97316', '#8b5cf6', '#06b6d4']}
           >
             About Me
           </DynamicHeading>
@@ -101,8 +100,8 @@ const About: React.FC = () => {
               variants={itemVariants}
               className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8"
             >
-              🎓 I am a passionate <strong className="text-pink-600">Computer Science Engineering</strong> student at{' '}
-              <em className="text-purple-600">Maharaja Agrasen Institute of Technology (MAIT)</em>, currently in my 3rd year. 
+              I am a passionate Computer Science Engineering student at 
+              Maharaja Agrasen Institute of Technology (MAIT), currently in my 3rd year. 
               My journey combines academic excellence with athletic achievement and technical innovation.
             </motion.p>
 
@@ -110,14 +109,14 @@ const About: React.FC = () => {
               variants={itemVariants}
               className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
             >
-              🏆 As a <strong className="text-orange-600">University-level Badminton Champion</strong> with 2 Silver Medals, 
-              I bring the same dedication and strategic thinking to my technical pursuits. Currently serving as{' '}
-              <em className="text-blue-600">Social Media Head</em> for our college cultural society, I bridge creativity with technology.
+              As a University-level Badminton Champion with 2 Silver Medals, 
+              I bring the same dedication and strategic thinking to my technical pursuits. Currently serving as 
+              Social Media Head for our college cultural society, I bridge creativity with technology.
             </motion.p>
           </motion.div>
         </ScrollAnimatedSection>
 
-        {/* Enhanced Achievement Cards */}
+        {/* Achievement Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {achievements.map((achievement, index) => (
             <ScrollAnimatedSection
@@ -148,7 +147,7 @@ const About: React.FC = () => {
                     />
                   </motion.div>
 
-                  <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-pink-600 transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-red-600 transition-colors">
                     {achievement.title}
                   </h3>
                   
@@ -175,7 +174,7 @@ const About: React.FC = () => {
           ))}
         </div>
 
-        {/* Enhanced Skills Section */}
+        {/* Skills Section */}
         <ScrollAnimatedSection direction="up" delay={0.4}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -183,7 +182,7 @@ const About: React.FC = () => {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <h3 className="text-3xl font-bold text-gray-800 mb-6">Core Strengths</h3>
+              <h3 className="text-3xl font-bold text-red-600 mb-6">Core Strengths</h3>
               <div className="space-y-6">
                 {skills.map((skill, index) => (
                   <motion.div
@@ -195,7 +194,7 @@ const About: React.FC = () => {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center">
-                        <skill.icon className="w-5 h-5 text-pink-500 mr-3" />
+                        <skill.icon className="w-5 h-5 text-red-500 mr-3" />
                         <span className="font-medium text-gray-700">{skill.name}</span>
                       </div>
                       <span className="text-sm font-semibold text-gray-600">{skill.level}%</span>
@@ -203,7 +202,7 @@ const About: React.FC = () => {
                     
                     <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full relative"
+                        className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full relative"
                         initial={{ width: 0 }}
                         animate={inView ? { width: `${skill.level}%` } : {}}
                         transition={{ duration: 1.5, delay: index * 0.2 }}
@@ -228,7 +227,7 @@ const About: React.FC = () => {
             >
               <div className="glass p-8 rounded-2xl relative overflow-hidden">
                 <motion.div
-                  className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-full blur-xl"
+                  className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-400/20 to-red-500/20 rounded-full blur-xl"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                 />
@@ -241,7 +240,7 @@ const About: React.FC = () => {
                 </blockquote>
                 
                 <div className="flex items-center mt-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mr-4">
                     <span className="text-white font-bold text-lg">N</span>
                   </div>
                   <div>
@@ -254,7 +253,7 @@ const About: React.FC = () => {
           </div>
         </ScrollAnimatedSection>
 
-        {/* Enhanced Personal Quote */}
+        {/* Personal Quote */}
         <ScrollAnimatedSection direction="up" delay={0.6} className="mt-16">
           <motion.div
             className="glass p-10 rounded-3xl max-w-4xl mx-auto gradient-border relative overflow-hidden"
@@ -264,7 +263,7 @@ const About: React.FC = () => {
             <motion.div
               className="absolute inset-0 opacity-10"
               style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec4899' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
               }}
               animate={{ x: [0, 60, 0], y: [0, 60, 0] }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
@@ -286,7 +285,7 @@ const About: React.FC = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
             >
-              <p className="text-pink-600 font-bold text-lg">- Nimisha Bhateja</p>
+              <p className="text-red-600 font-bold text-lg">- Nimisha Bhateja</p>
               <p className="text-gray-500 text-sm mt-1">Building Tomorrow's Technology Today</p>
             </motion.div>
           </motion.div>

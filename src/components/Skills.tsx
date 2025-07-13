@@ -23,7 +23,7 @@ const Skills: React.FC = () => {
         { name: 'SQL', level: 82, icon: '📊' },
         { name: 'React', level: 87, icon: '⚛️' }
       ],
-      color: 'from-pink-400 to-rose-400',
+      color: 'from-red-400 to-red-600',
       description: 'Proficient in multiple programming paradigms with strong problem-solving skills'
     },
     {
@@ -37,7 +37,7 @@ const Skills: React.FC = () => {
         { name: 'Pandas', level: 93, icon: '🐼' },
         { name: 'Data Analysis', level: 89, icon: '📊' }
       ],
-      color: 'from-blue-400 to-purple-500',
+      color: 'from-red-500 to-red-700',
       description: 'Specialized in building intelligent systems and extracting insights from data'
     },
     {
@@ -51,7 +51,7 @@ const Skills: React.FC = () => {
         { name: 'Docker', level: 75, icon: '🐳' },
         { name: 'Linux', level: 80, icon: '🐧' }
       ],
-      color: 'from-green-400 to-teal-500',
+      color: 'from-red-600 to-red-800',
       description: 'Efficient workflow management and modern development environment expertise'
     },
     {
@@ -65,7 +65,7 @@ const Skills: React.FC = () => {
         { name: 'Mentoring', level: 88, icon: '🌟' },
         { name: 'Innovation', level: 90, icon: '💡' }
       ],
-      color: 'from-purple-400 to-pink-500',
+      color: 'from-red-700 to-red-900',
       description: 'Strong interpersonal skills developed through sports and leadership roles'
     }
   ];
@@ -100,10 +100,10 @@ const Skills: React.FC = () => {
 
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
-      {/* Enhanced Background */}
+      {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-200/20 to-purple-200/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-r from-pink-200/20 to-rose-200/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-red-200/20 to-red-300/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-r from-red-300/20 to-red-400/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -111,7 +111,6 @@ const Skills: React.FC = () => {
           <DynamicHeading
             level="h2"
             className="text-4xl lg:text-5xl mb-6"
-            gradientColors={['#3b82f6', '#8b5cf6', '#ec4899', '#f97316']}
           >
             Skills & Expertise
           </DynamicHeading>
@@ -123,9 +122,7 @@ const Skills: React.FC = () => {
             animate={inView ? "visible" : "hidden"}
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
           >
-            🚀 A comprehensive toolkit combining <strong className="text-blue-600">technical excellence</strong>, 
-            <strong className="text-purple-600"> creative innovation</strong>, and 
-            <strong className="text-pink-600"> leadership skills</strong> to build next-generation solutions
+            A comprehensive toolkit combining technical excellence, creative innovation, and leadership skills to build next-generation solutions
           </motion.p>
         </ScrollAnimatedSection>
 
@@ -170,7 +167,7 @@ const Skills: React.FC = () => {
                   </motion.div>
                   
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-800 group-hover:text-pink-600 transition-colors">
+                    <h3 className="text-2xl font-bold text-gray-800 group-hover:text-red-600 transition-colors">
                       {category.title}
                     </h3>
                     <p className="text-gray-600 text-sm mt-1">{category.description}</p>
@@ -189,7 +186,7 @@ const Skills: React.FC = () => {
                       className="group/skill relative"
                     >
                       <motion.div
-                        className="p-4 bg-white/60 rounded-xl border border-gray-200/50 text-center hover:border-pink-300 hover:bg-white/80 transition-all-300 cursor-pointer relative overflow-hidden"
+                        className="p-4 bg-white/60 rounded-xl border border-gray-200/50 text-center hover:border-red-300 hover:bg-white/80 transition-all-300 cursor-pointer relative overflow-hidden"
                         whileHover={{ 
                           scale: 1.05,
                           boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
@@ -199,7 +196,7 @@ const Skills: React.FC = () => {
                         {/* Skill icon and name */}
                         <div className="flex items-center justify-center mb-2">
                           <span className="text-2xl mr-2">{skill.icon}</span>
-                          <span className="text-sm font-semibold text-gray-700 group-hover/skill:text-pink-600 transition-colors">
+                          <span className="text-sm font-semibold text-gray-700 group-hover/skill:text-red-600 transition-colors">
                             {skill.name}
                           </span>
                         </div>
@@ -252,7 +249,7 @@ const Skills: React.FC = () => {
                     <span className="text-gray-600">Average Proficiency:</span>
                     <motion.span 
                       className="font-bold text-gray-800"
-                      animate={{ color: ['#374151', '#ec4899', '#374151'] }}
+                      animate={{ color: ['#374151', '#dc2626', '#374151'] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
                       {Math.round(category.skills.reduce((acc, skill) => acc + skill.level, 0) / category.skills.length)}%
@@ -264,7 +261,7 @@ const Skills: React.FC = () => {
           ))}
         </div>
 
-        {/* Enhanced Proficiency Overview */}
+        {/* Proficiency Overview */}
         <ScrollAnimatedSection direction="up" delay={0.8} className="mt-20">
           <motion.div
             className="glass p-10 rounded-3xl relative overflow-hidden"
@@ -274,7 +271,7 @@ const Skills: React.FC = () => {
             <motion.div
               className="absolute inset-0 opacity-5"
               style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ec4899' fill-opacity='0.4'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E")`
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='0.4'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
               }}
               animate={{ x: [0, 40, 0], y: [0, 40, 0] }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
@@ -283,7 +280,6 @@ const Skills: React.FC = () => {
             <DynamicHeading
               level="h3"
               className="text-3xl text-center mb-12"
-              gradientColors={['#06b6d4', '#8b5cf6', '#ec4899']}
             >
               Professional Competency Levels
             </DynamicHeading>
@@ -295,7 +291,7 @@ const Skills: React.FC = () => {
                   skills: ['Python', 'Machine Learning', 'Problem Solving'], 
                   percentage: 92, 
                   icon: Star,
-                  color: 'from-green-400 to-emerald-500',
+                  color: 'from-red-400 to-red-600',
                   description: 'Advanced expertise with real-world project experience'
                 },
                 { 
@@ -303,7 +299,7 @@ const Skills: React.FC = () => {
                   skills: ['React', 'Data Analysis', 'Leadership'], 
                   percentage: 87, 
                   icon: Award,
-                  color: 'from-blue-400 to-purple-500',
+                  color: 'from-red-500 to-red-700',
                   description: 'Strong proficiency with independent project capability'
                 },
                 { 
@@ -311,7 +307,7 @@ const Skills: React.FC = () => {
                   skills: ['TensorFlow', 'Git/GitHub', 'SQL'], 
                   percentage: 83, 
                   icon: Target,
-                  color: 'from-purple-400 to-pink-500',
+                  color: 'from-red-600 to-red-800',
                   description: 'Solid understanding with practical application skills'
                 },
                 { 
@@ -319,7 +315,7 @@ const Skills: React.FC = () => {
                   skills: ['Docker', 'Linux', 'Deep Learning'], 
                   percentage: 78, 
                   icon: Zap,
-                  color: 'from-pink-400 to-rose-500',
+                  color: 'from-red-700 to-red-900',
                   description: 'Growing expertise with continuous learning focus'
                 }
               ].map((item, index) => (
@@ -359,9 +355,9 @@ const Skills: React.FC = () => {
                       />
                       <defs>
                         <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#ec4899" />
-                          <stop offset="50%" stopColor="#8b5cf6" />
-                          <stop offset="100%" stopColor="#06b6d4" />
+                          <stop offset="0%" stopColor="#dc2626" />
+                          <stop offset="50%" stopColor="#b91c1c" />
+                          <stop offset="100%" stopColor="#991b1b" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -379,7 +375,7 @@ const Skills: React.FC = () => {
                     </div>
                   </div>
 
-                  <h4 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-pink-600 transition-colors">
+                  <h4 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-red-600 transition-colors">
                     {item.level}
                   </h4>
                   
@@ -395,7 +391,7 @@ const Skills: React.FC = () => {
                         initial={{ opacity: 0, scale: 0 }}
                         animate={inView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ delay: index * 0.2 + skillIndex * 0.1 + 0.5 }}
-                        whileHover={{ scale: 1.05, borderColor: '#ec4899' }}
+                        whileHover={{ scale: 1.05, borderColor: '#dc2626' }}
                       >
                         {skill}
                       </motion.span>

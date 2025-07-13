@@ -7,21 +7,19 @@ interface DynamicHeadingProps {
   children: React.ReactNode;
   level?: 'h1' | 'h2' | 'h3' | 'h4';
   className?: string;
-  gradientColors?: string[];
 }
 
 const DynamicHeading: React.FC<DynamicHeadingProps> = ({
   children,
   level = 'h2',
-  className = '',
-  gradientColors = ['#ec4899', '#f97316', '#f59e0b', '#8b5cf6']
+  className = ''
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.3
   });
 
-  const { scrollDirection, scrollY } = useScrollDirection();
+  const { scrollDirection } = useScrollDirection();
 
   const HeadingTag = level;
 
@@ -62,9 +60,6 @@ const DynamicHeading: React.FC<DynamicHeadingProps> = ({
     }
   };
 
-  const colorRotation = (scrollY / 100) % gradientColors.length;
-  const currentGradient = `linear-gradient(135deg, ${gradientColors[Math.floor(colorRotation)]}, ${gradientColors[(Math.floor(colorRotation) + 1) % gradientColors.length]})`;
-
   return (
     <motion.div
       ref={ref}
@@ -74,9 +69,9 @@ const DynamicHeading: React.FC<DynamicHeadingProps> = ({
       className="relative"
     >
       <HeadingTag
-        className={`font-playfair font-bold ${className}`}
+        className={`font-playfair font-bold text-cherry-red ${className}`}
         style={{
-          background: currentGradient,
+          background: 'linear-gradient(135deg, #dc2626, #b91c1c, #991b1b)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text'
@@ -98,8 +93,7 @@ const DynamicHeading: React.FC<DynamicHeadingProps> = ({
       
       {/* Animated underline */}
       <motion.div
-        className="absolute bottom-0 left-0 h-1 rounded-full"
-        style={{ background: currentGradient }}
+        className="absolute bottom-0 left-0 h-1 rounded-full bg-gradient-to-r from-red-600 to-red-800"
         initial={{ width: 0, opacity: 0 }}
         animate={inView ? { width: '100%', opacity: 1 } : { width: 0, opacity: 0 }}
         transition={{ duration: 1.5, delay: 0.5 }}

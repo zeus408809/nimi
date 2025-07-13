@@ -93,24 +93,18 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
     }
   };
 
-  const dynamicGradient = `linear-gradient(135deg, 
-    hsl(${(scrollY * 0.5) % 360}, 70%, 60%), 
-    hsl(${(scrollY * 0.3 + 60) % 360}, 70%, 60%), 
-    hsl(${(scrollY * 0.2 + 120) % 360}, 70%, 60%)
-  )`;
-
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Enhanced Animated background particles */}
       <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="particle absolute rounded-full"
             style={{
               width: Math.random() * 6 + 2 + 'px',
               height: Math.random() * 6 + 2 + 'px',
-              background: dynamicGradient
+              background: 'linear-gradient(135deg, #dc2626, #b91c1c, #991b1b)'
             }}
             initial={{
               x: Math.random() * window.innerWidth,
@@ -133,12 +127,12 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
 
       {/* Dynamic background gradient */}
       <motion.div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(236, 72, 153, 0.3) 0%, rgba(249, 115, 22, 0.2) 50%, transparent 100%)`
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(220, 38, 38, 0.3) 0%, rgba(185, 28, 28, 0.2) 50%, transparent 100%)`
         }}
         animate={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(236, 72, 153, 0.3) 0%, rgba(249, 115, 22, 0.2) 50%, transparent 100%)`
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(220, 38, 38, 0.3) 0%, rgba(185, 28, 28, 0.2) 50%, transparent 100%)`
         }}
         transition={{ duration: 0.5 }}
       />
@@ -150,27 +144,27 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
           animate="visible"
           className="grid lg:grid-cols-2 gap-12 items-center"
         >
-          {/* Enhanced Text Content */}
+          {/* Text Content */}
           <ScrollAnimatedSection direction="left" className="text-center lg:text-left">
             <motion.div variants={itemVariants}>
-              {/* Greeting with typing effect */}
+              {/* Greeting */}
               <motion.p
                 className="text-lg text-gray-600 mb-4 font-medium"
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: 'auto' }}
                 transition={{ duration: 2, ease: 'easeOut' }}
               >
-                👋 Hello, I'm
+                Hello, I'm
               </motion.p>
 
-              {/* Dynamic Name */}
+              {/* Name with Cherry Red */}
               <motion.h1
                 variants={titleVariants}
                 className="text-5xl lg:text-7xl font-bold mb-6 font-playfair relative"
               >
                 <motion.div
                   style={{
-                    background: dynamicGradient,
+                    background: 'linear-gradient(135deg, #dc2626, #b91c1c, #991b1b)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text'
@@ -203,35 +197,22 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
                 </motion.div>
               </motion.h1>
 
-              {/* Enhanced Role with rotating text */}
+              {/* Role */}
               <motion.div variants={itemVariants} className="mb-4">
                 <motion.p className="text-xl lg:text-2xl text-gray-600 font-semibold">
-                  <motion.span
-                    style={{ color: `hsl(${(scrollY * 0.5) % 360}, 70%, 50%)` }}
-                    className="font-bold"
-                  >
-                    AI/ML Engineer
-                  </motion.span>
+                  <span className="text-red-600 font-bold">AI/ML Engineer</span>
                   {' & '}
-                  <motion.span
-                    style={{ color: `hsl(${(scrollY * 0.3 + 180) % 360}, 70%, 50%)` }}
-                    className="font-bold"
-                  >
-                    Full Stack Developer
-                  </motion.span>
+                  <span className="text-red-700 font-bold">Full Stack Developer</span>
                 </motion.p>
               </motion.div>
 
-              {/* Enhanced Description */}
+              {/* Description */}
               <motion.div variants={itemVariants} className="mb-8">
-                <p className="text-lg text-gray-500 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                  🎓 <strong>BTech Computer Science</strong> student at <em>Maharaja Agrasen Institute of Technology</em>
-                  <br />
-                  🏆 <strong>University Badminton Champion</strong> with <em>2 Silver Medals</em>
-                  <br />
-                  🤖 Specializing in <strong>Machine Learning</strong> and <em>innovative web solutions</em>
-                  <br />
-                  💼 <strong>AI/ML Intern</strong> at <em>Brainwave Matrix Solutions</em>
+                <p className="text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                  BTech Computer Science student at Maharaja Agrasen Institute of Technology.
+                  University Badminton Champion with 2 Silver Medals.
+                  Specializing in Machine Learning and innovative web solutions.
+                  AI/ML Intern at Brainwave Matrix Solutions.
                 </p>
               </motion.div>
 
@@ -241,7 +222,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
                   {achievements.map((achievement, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-pink-200 shadow-sm"
+                      className="flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-red-200 shadow-sm"
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, scale: 0 }}
@@ -255,7 +236,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
                 </div>
               </motion.div>
 
-              {/* Enhanced Social Links */}
+              {/* Social Links */}
               <motion.div variants={itemVariants} className="mb-8">
                 <div className="flex justify-center lg:justify-start space-x-6">
                   {socialLinks.map((link, index) => (
@@ -268,7 +249,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
                       whileHover={{ 
                         scale: 1.2, 
                         rotate: 360,
-                        boxShadow: '0 20px 40px rgba(236, 72, 153, 0.3)'
+                        boxShadow: '0 20px 40px rgba(220, 38, 38, 0.3)'
                       }}
                       whileTap={{ scale: 0.9 }}
                       initial={{ opacity: 0, scale: 0, rotate: -180 }}
@@ -296,19 +277,19 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
                 </div>
               </motion.div>
 
-              {/* Enhanced CTA Buttons */}
+              {/* CTA Buttons */}
               <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <motion.a
                   href="#projects"
-                  className="group relative px-8 py-4 bg-gradient-to-r from-pink-500 to-peach-500 text-white rounded-full font-medium overflow-hidden"
+                  className="group relative px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full font-medium overflow-hidden"
                   whileHover={{ 
                     scale: 1.05,
-                    boxShadow: '0 20px 40px rgba(236, 72, 153, 0.4)'
+                    boxShadow: '0 20px 40px rgba(220, 38, 38, 0.4)'
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-peach-500 to-pink-500"
+                    className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-600"
                     initial={{ x: '-100%' }}
                     whileHover={{ x: '0%' }}
                     transition={{ duration: 0.3 }}
@@ -321,15 +302,15 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
 
                 <motion.a
                   href="#contact"
-                  className="group relative px-8 py-4 glass border-2 border-pink-300 text-gray-700 rounded-full font-medium overflow-hidden"
+                  className="group relative px-8 py-4 glass border-2 border-red-300 text-gray-700 rounded-full font-medium overflow-hidden"
                   whileHover={{ 
                     scale: 1.05,
-                    borderColor: '#ec4899'
+                    borderColor: '#dc2626'
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-pink-50 to-peach-50"
+                    className="absolute inset-0 bg-gradient-to-r from-red-50 to-red-100"
                     initial={{ scale: 0 }}
                     whileHover={{ scale: 1 }}
                     transition={{ duration: 0.3 }}
@@ -359,7 +340,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
             </motion.div>
           </ScrollAnimatedSection>
 
-          {/* Enhanced 3D Avatar */}
+          {/* 3D Avatar */}
           <ScrollAnimatedSection direction="right" className="flex justify-center lg:justify-end">
             <motion.div
               className="w-96 h-96 relative"
@@ -417,7 +398,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
         </motion.div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
@@ -426,7 +407,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
       >
         <motion.a
           href="#about"
-          className="flex flex-col items-center text-gray-500 hover:text-pink-600 transition-colors group"
+          className="flex flex-col items-center text-gray-500 hover:text-red-600 transition-colors group"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -437,7 +418,7 @@ const Hero: React.FC<HeroProps> = ({ mousePosition }) => {
           >
             <ArrowDown className="w-5 h-5" />
             <motion.div
-              className="absolute inset-0 border-2 border-pink-400 rounded-full"
+              className="absolute inset-0 border-2 border-red-400 rounded-full"
               animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
